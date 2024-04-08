@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Pagamento</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+
+        }
+
+        img {
+            margin: 2px;
+            object-fit: cover;
+            border: 0.5px solid black;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Folha de Pagamento - 06/05/2021</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Funcionarios</th>
+                <th>Salarios</th>
+                <th>Dias Trabalhados</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="clara.jpg" alt="" height=185 width=185></img></td>
+                <td>Clara Nunes</td>
+                <td>5.500,00</td>
+                <td><input type="text" id="diasClara"></td>
+            </tr>
+            <tr>
+                <td><img src="albertina.webp" alt="" height=185 width=185></img></td>
+                <td>Albertina de Oliveira</td>
+                <td>10.000,00</td>
+                <td><input type="text" id="diasAlbertina"></td>
+            </tr>
+            <tr>
+                <td><img src="antonio.webp" alt="" height=185 width=185></img></td>
+                <td>Antonio Carlos Barbosa</td>
+                <td>20.000,00</td>
+                <td><input type="text" id="diasAntonio"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br><button onclick="calcularPagamento()">Enviar</button>
+    <p>Total da folha de pagamento: R$<span id="totalFolha"></span></p>
+
+    <script>
+        function calcularPagamento() {
+            var diasClara = parseFloat(document.getElementById("diasClara").value);
+            var diasAlbertina = parseFloat(document.getElementById("diasAlbertina").value);
+            var diasAntonio = parseFloat(document.getElementById("diasAntonio").value);
+
+            var salarioClara = 5500;
+            var salarioAlbertina = 10000;
+            var salarioAntonio = 20000;
+
+            var pagamentoClara = (diasClara * salarioClara) / 30;
+            var pagamentoAlbertina = (diasAlbertina * salarioAlbertina) / 30;
+            var pagamentoAntonio = (diasAntonio * salarioAntonio) / 30;
+
+            var totalFolha = pagamentoClara + pagamentoAlbertina + pagamentoAntonio;
+
+            document.getElementById("totalFolha").textContent = totalFolha.toFixed(2);
+
+            alert("Clara Nunes receberá R$ " + pagamentoClara.toFixed(2) + "\nAlbertina de Oliveira receberá R$ " +
+                pagamentoAlbertina.toFixed(2) + "\nAntonio Carlos Barbosa receberá R$ " + pagamentoAntonio.toFixed(2));
+        }
+    </script>
+
+</body>
+
+</html>
